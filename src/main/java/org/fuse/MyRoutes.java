@@ -21,6 +21,7 @@ import org.apache.camel.Endpoint;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
 import org.apache.camel.cdi.Uri;
+import org.apache.camel.spi.UriEndpoint;
 
 /**
  * Configures all our Camel routes, components, endpoints and beans
@@ -35,6 +36,10 @@ public class MyRoutes extends RouteBuilder {
     @Inject
     @Uri("log:output")
     private Endpoint resultEndpoint;
+    
+    @Inject
+    @Uri("http://datagrid-client.accenture.cloud/put?parametro1=1&parametro2=1")
+    private Endpoint datagridEndpoint;
 
     @Override
     public void configure() throws Exception {
@@ -43,6 +48,9 @@ public class MyRoutes extends RouteBuilder {
         from(inputEndpoint)
             .beanRef("counterBean")
             .to(resultEndpoint);
+        
+        from(datagridEndpoint)
+        .to(resultEndpoint);
     }
 
 }
