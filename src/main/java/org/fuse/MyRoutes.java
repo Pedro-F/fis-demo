@@ -38,7 +38,7 @@ public class MyRoutes extends RouteBuilder {
     private Endpoint resultEndpoint;
     
     @Inject
-    @Uri("http://datagrid-client.accenture.cloud/put?parametro1=1&parametro2=1")
+    @Uri("ahc:http:datagrid-client.accenture.cloud/put?parametro1=1&parametro2=1")
     private Endpoint datagridEndpoint;
 
     @Override
