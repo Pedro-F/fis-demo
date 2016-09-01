@@ -37,9 +37,9 @@ public class MyRoutes extends RouteBuilder {
     @Uri("log:output")
     private Endpoint resultEndpoint;
     
-    @Inject
-    @Uri("ahc:http:datagrid-client.accenture.cloud/put?parametro1=1&parametro2=1")
-    private Endpoint datagridEndpoint;
+//    @Inject
+//    @Uri("ahc:http:datagrid-client.accenture.cloud/put?parametro1=1&parametro2=1")
+//    private Endpoint datagridEndpoint;
 
     @Override
     public void configure() throws Exception {
@@ -49,8 +49,8 @@ public class MyRoutes extends RouteBuilder {
             .beanRef("counterBean")
             .to(resultEndpoint);
         
-        from(datagridEndpoint)
-        .to(resultEndpoint);
+//        from(datagridEndpoint)
+//        .to(resultEndpoint);
     }
 
 }
